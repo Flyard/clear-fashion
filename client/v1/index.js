@@ -67,7 +67,6 @@ function todo3(){
             brandList.push(database[i].brand);
         }
     }
-
     console.log('[-] Number of brands: ' + brandList.length)
     console.log('[-] Brands: ' + brandList);
     return brandList;
@@ -83,17 +82,34 @@ function todo4(){
     console.log(sortedPriceAscend);
     return sortedPriceAscend;
 }
-todo4();
+//todo4();
 
 // 🎯 TODO 5: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
 // 2. Create a variable and assign it the list of products by date from recent to old
 // 3. Log the variable
+function todo5(){
+    const sortedDateAscend = database.sort((a, b) => (Date.parse(b.released) - Date.parse(a.released)));
+    console.log(sortedDateAscend);
+    return sortedDateAscend;
+}
+//todo5();
 
 // 🎯 TODO 6: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
 // 2. Log the list
 
+function todo6(){
+    const filterPrice = [];
+    for(let i = 0; i < database.length; i++){
+        if(database[i].price >= 50 && database[i].price <= 100){
+            filterPrice.push(database[i]);
+        }
+    }
+    console.log(filterPrice);
+    return filterPrice;
+}
+todo6();
 // 🎯 TODO 7: Average price
 // 1. Determine the average price of the marketplace
 // 2. Log the average
