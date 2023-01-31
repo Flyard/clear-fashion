@@ -109,10 +109,22 @@ function todo6(){
     console.log(filterPrice);
     return filterPrice;
 }
-todo6();
+//todo6();
 // 🎯 TODO 7: Average price
 // 1. Determine the average price of the marketplace
 // 2. Log the average
+
+function todo7(database) {
+    let sum = 0;
+    for(let i = 0; i < database.length; i++){
+        sum+= database[i].price;
+    }
+    sum = sum/database.length;
+    console.log('[-] Average price is: ' + sum.toPrecision(4)+ '€.');
+    return sum;
+}
+todo7(database);
+
 
 /**
  * 🏎
@@ -137,6 +149,15 @@ todo6();
 // 2. Log the variable
 // 3. Log the number of products by brands
 
+function todo9(){
+    const brands = {};
+    const brandList = todo3();
+    for(let i = 0; i < brandList.length; i++){
+        
+    }
+
+}
+todo9();
 // 🎯 TODO 9: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
 // 2. Log the sort
