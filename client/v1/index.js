@@ -52,7 +52,7 @@ console.log(MY_FAVORITE_BRANDS[0]);
 
 function todo2() {
     const numberOfProduct = database.length;
-    console.log(numberOfProduct);
+    console.log('[-] Number of product: '+numberOfProduct);
     return numberOfProduct;
 }
 todo2();
@@ -78,6 +78,12 @@ todo3();
 // 1. Create a function to sort the marketplace products by price
 // 2. Create a variable and assign it the list of products by price from lowest to highest
 // 3. Log the variable
+function todo4(){
+    const sortedPriceAscend  = database.sort((a, b) => (a.price-b.price))
+    console.log(sortedPriceAscend);
+    return sortedPriceAscend;
+}
+todo4();
 
 // 🎯 TODO 5: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
