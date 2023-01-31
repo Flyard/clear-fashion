@@ -2,6 +2,7 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode#invoking_strict_mode
 'use strict';
 
+const database = require('./data');
 console.log('🚀 This is it.');
 
 const MY_FAVORITE_BRANDS = [
@@ -18,9 +19,10 @@ const MY_FAVORITE_BRANDS = [
     'url': 'https://ecclo.fr/'
   }
 ];
-
 console.table(MY_FAVORITE_BRANDS);
 console.log(MY_FAVORITE_BRANDS[0]);
+
+
 
 /**
  * 🌱
@@ -47,11 +49,27 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // 🎯 TODO 2: Number of products
 // 1. Create a variable and assign it the number of products
 // 2. Log the variable
-
+todo2();
+function todo2() {
+    const numberOfProduct = database.length;
+    console.log(numberOfProduct);
+}
+const numberOfProduct = database.length;
 // 🎯 TODO 3: Brands name
 // 1. Create a variable and assign it the list of brands name only
 // 2. Log the variable
 // 3. Log how many brands we have
+function todo3(){
+    const brandList = [];
+    for(let i = 0; i < numberOfProduct; i++) {
+        if(!brandList.includes(database[i].brand)){
+            brandList.push(database[i].brand);
+        }
+    }
+    console.log('[-] Number of brands: ' + brandList.length)
+    console.log('[-] Brands: ' + brandList);
+}
+todo3();
 
 // 🎯 TODO 4: Sort by price
 // 1. Create a function to sort the marketplace products by price
