@@ -149,18 +149,11 @@ todo7(database);
 // 2. Log the variable
 // 3. Log the number of products by brands
 
-function todo9(){
-    const brands = {};
-    const brandList = todo3();
-    for(let i = 0; i < brandList.length; i++){
-        
-    }
 
-}
-todo9();
 // 🎯 TODO 9: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
 // 2. Log the sort
+
 
 // 🎯 TODO 10: Sort by date for each brand
 // 1. For each brand, sort the products by date, from old to recent
@@ -373,10 +366,32 @@ const COTELE_PARIS = [
 // // 1. Log if coteleparis is a reasonable price shop (true or false)
 // // A reasonable price if all the products are less than 100€
 
+function reasonablePrice(brand) {
+  let i = 0;
+  for(i = 0; i<brand.length; i++) {
+    if(brand[i].price >= 100) {
+      break;
+    }
+  }
+  return brand[i]
+
+}
+console.log(reasonablePrice(COTELE_PARIS));
+
 // 🎯 TODO 3: Find a specific product
 // 1. Find the product with the uuid `2b9a47e3-ed73-52f6-8b91-379e9c8e526c`
 // 2. Log the product
 
+function findProduct(brand) {
+  let index = 0;
+  for(index; index < brand.length; index++) {
+    if(brand[index].uuid === '2b9a47e3-ed73-52f6-8b91-379e9c8e526c') {
+      break;
+    }
+  }
+  return brand[index];
+}
+console.log(findProduct(COTELE_PARIS))
 // 🎯 TODO 4: Delete a specific product
 // 1. Delete the product with the uuid `2b9a47e3-ed73-52f6-8b91-379e9c8e526c`
 // 2. Log the new list of product
@@ -403,7 +418,8 @@ jacket.favorite = true;
 
 // 1. Log `blueJacket` and `jacket` variables
 // 2. What do you notice?
-
+console.log(jacket);
+console.log(blueJacket)
 // we make a new assignment again
 blueJacket = {
   'link':
@@ -419,6 +435,7 @@ blueJacket = {
 
 // 3. Update `jacket` property with `favorite` to true WITHOUT changing blueJacket properties
 
+
 /**
  * 🎬
  * The End: last thing to do
@@ -428,3 +445,4 @@ blueJacket = {
 // 🎯 LAST TODO: Save in localStorage
 // 1. Save MY_FAVORITE_BRANDS in the localStorage
 // 2. log the localStorage
+
