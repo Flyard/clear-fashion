@@ -43,7 +43,7 @@
     <button v-on:click="fetchFav()">Show favourites</button>
     <button v-on:click="clearFav()">Clear favourites</button>
     <div v-if="toggleFav">
-        <li v-for="fav in fav">{{ fav}}</li>
+        <li v-for="fav in fav">{{fav.name + ' '+ fav.price}}</li>
     </div>
 
 
@@ -65,7 +65,8 @@ import axios from 'axios';
                 numberOfProducts: 0,
                 numberOfBrands: 0,
                 fav: [],
-                toggleFav: false
+                toggleFav: false,
+                productName:''
         }
         },
         created() {
@@ -123,20 +124,29 @@ import axios from 'axios';
             toFav(products) {
                 let favourites = [];
                 favourites.push(products);
-                console.log(products.name)
-                console.log(JSON.stringify(favourites))
                 localStorage.setItem(products.name, JSON.stringify(products));
             },
             clearFav() {
                 localStorage.clear();
             },
-            fetchFav() {
-                let fav = {...localStorage};
-                fav = eval(fav);
+             fetchFav() {
+                let fav = [];
+                for(let i = 0; i < localStorage.length; i++) {
+                    let keys = localStorage.key(i);
+                    let val = localStorage.getItem(keys);
+                    fav.push(JSON.parse(val));
+                }
                 this.fav = fav;
                 this.toggleFav = !this.toggleFav;
-                return Object.keys(fav);
-            }
+                return this.fav;
+    
+                // let fav = localStorage.getItem('CASQUETTE CÔTELÉ DENIM');
+                // let favArray = JSON.parse(fav);
+                // this.fav = favArray;
+                // console.log(this.fav.name + ' ' + this.fav.brand)
+                // this.toggleFav = !this.toggleFav; 
+             },
+
         },
     }
 </script>
