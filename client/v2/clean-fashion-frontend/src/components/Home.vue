@@ -40,8 +40,13 @@
     </div>
 
     <h1>Favourites</h1>
+    <button v-on:click="fetchFav()">Show favourites</button>
+    <button v-on:click="clearFav()">Clear favourites</button>
+    <div v-if="toggleFav">
+        <li v-for="fav in fav">{{ fav}}</li>
+    </div>
 
-    <li v-for="fav in fav">{{ fav}}</li>
+
 
 </template>
 
@@ -59,12 +64,12 @@ import axios from 'axios';
                 brandSelect: '',
                 numberOfProducts: 0,
                 numberOfBrands: 0,
-                fav: []
+                fav: [],
+                toggleFav: false
         }
         },
         created() {
             this.getIndicators();
-            this.fetchFav();
         },
         watch: {
             size: 'fetchData',
@@ -72,6 +77,9 @@ import axios from 'axios';
             brandSelect: 'sortBrand'
         },
         methods: {
+            showFav() {
+                this.toggleFav = !this.toggleFav;
+            },
             async fetchData() {
                 let data = await axios.get(url+`?size=${this.size}`)
                 .then((res) => {
@@ -126,6 +134,7 @@ import axios from 'axios';
                 let fav = {...localStorage};
                 fav = eval(fav);
                 this.fav = fav;
+                this.toggleFav = !this.toggleFav;
                 return Object.keys(fav);
             }
         },
