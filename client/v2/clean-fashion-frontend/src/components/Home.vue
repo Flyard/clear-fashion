@@ -36,6 +36,8 @@
     <div v-for="products in products">
         <li  v-if="sortBrand(brandSelect,products.brand)">
         {{ 'Name: ' + products.name + ' Brand: '+products.brand + ' Price: ' + products.price + ' Release date: ' + products.released}} 
+
+        <button type="button" v-on:click="toFav(products)">Fav</button>
         </li>
     </div>
 
@@ -105,6 +107,12 @@ import axios from 'axios';
                     .then((response) => {
                         this.numberOfBrands = response.data.data.result.length;
                     })                         
+            },
+
+            toFav(product) {
+                let favourites = [];
+                favourites.push(product);
+                localStorage.setItem('favoris', favourites);
             }
         },
     }

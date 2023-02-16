@@ -1,8 +1,8 @@
 
 <template>
-    <router-view>
+  <router-view>
 
-    </router-view>
+</router-view>
 </template>
 
 <script>
@@ -14,9 +14,9 @@ export default {
   },
   computed: {
   },
-  methods:{
+  methods: {
   },
-  mounted: function(){
+  mounted: function () {
   }
 }
 </script>
