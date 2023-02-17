@@ -1,31 +1,39 @@
 <template>
   <h1>Clear Fashion</h1>
-  <p>Show:</p>
-  <select v-model="size">
-    <option>0</option>
-    <option>12</option>
-    <option>24</option>
-    <option>48</option>
-  </select>
+  <div class="clear-fashion">
+    <div class="show">
+      <p>Show:</p>
+      <select v-model="size">
+        <option>0</option>
+        <option>12</option>
+        <option>24</option>
+        <option>48</option>
+      </select>
+    </div>
 
-  <p>Page:</p>
-  <select v-model="currentPage">
-    <option v-for="currentPage in maxPage" v-bind:key="currentPage">
-      {{ currentPage }}
-    </option>
-  </select>
+    <div class="filters">
+      <p>Page:</p>
+      <select v-model="currentPage">
+        <option v-for="currentPage in maxPage" v-bind:key="currentPage">
+          {{ currentPage }}
+        </option>
+      </select>
 
-  <button type="button" v-on:click="sortDate(products)">By release date</button>
-  <button type="button" v-on:click="sortPrice(products)">By price</button>
+      <button type="button" v-on:click="sortDate(products)">
+        By release date
+      </button>
+      <button type="button" v-on:click="sortPrice(products)">By price</button>
 
-  <p>By brand:</p>
-  <select v-model="brandSelect">
-    <option disabled value="">Choose a brand</option>
-    <option>All products</option>
-    <option v-for="brands in brands" v-bind:key="brands.name">
-      {{ brands }}
-    </option>
-  </select>
+      <p>By brand:</p>
+      <select v-model="brandSelect">
+        <option disabled value="">Choose a brand</option>
+        <option>All products</option>
+        <option v-for="brands in brands" v-bind:key="brands.name">
+          {{ brands }}
+        </option>
+      </select>
+    </div>
+  </div>
 
   <h1>Indicators</h1>
   <p>Number of products: {{ numberOfProducts }}</p>
@@ -35,20 +43,12 @@
   <p>p90 price value</p>
   <p>p95 price value</p>
   <p>Last released date</p>
+  <button type="button" v-on:click="getReleased(products)">rel</button>
 
   <h1>Products</h1>
   <div v-for="products in products" v-bind:key="products.name">
     <li v-if="sortBrand(brandSelect, products.brand)">
-      {{
-        "Name: " +
-        products.name +
-        " Brand: " +
-        products.brand +
-        " Price: " +
-        products.price +
-        " Release date: " +
-        products.released
-      }}
+      {{ products.name + products.brand + products.price + products.released }}
       <button type="button" v-on:click="toFav(products)">Fav</button>
     </li>
   </div>
@@ -154,13 +154,12 @@ export default {
       this.fav = fav;
       this.toggleFav = !this.toggleFav;
       return this.fav;
-
-      // let fav = localStorage.getItem('CASQUETTE CÔTELÉ DENIM');
-      // let favArray = JSON.parse(fav);
-      // this.fav = favArray;
-      // console.log(this.fav.name + ' ' + this.fav.brand)
-      // this.toggleFav = !this.toggleFav;
     },
   },
 };
 </script>
+
+<style>
+@import "./css/homePage.css";
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;800&display=swap");
+</style>

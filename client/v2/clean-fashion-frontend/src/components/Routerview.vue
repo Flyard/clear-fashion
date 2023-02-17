@@ -1,22 +1,15 @@
-
 <template>
-  <router-view>
-
-</router-view>
+  <router-view> </router-view>
 </template>
 
 <script>
 export default {
-  name: "Header",
+  name: "HeaderVue",
   data() {
-    return {
-    };
+    return {};
   },
-  computed: {
-  },
-  methods: {
-  },
-  mounted: function () {
-  }
-}
+  computed: {},
+  methods: {},
+  mounted: function () {},
+};
 </script>
